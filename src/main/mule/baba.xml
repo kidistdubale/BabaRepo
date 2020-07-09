@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="d19e437b-a012-4965-ae75-f6ce61794177" >
+		<http:listener-connection host="0.0.0.0" port="8083" />
+	</http:listener-config>
+	<flow name="babaFlow" doc:id="bb3d20ac-cd6d-4483-a9f2-babd7320df9c" >
+		<http:listener doc:name="Listener" doc:id="09e26ad7-8137-41cf-b2c4-d2c102373bba" config-ref="HTTP_Listener_config" path="/baba"/>
+		<set-payload value='#["Baba is smart"]' doc:name="Set Payload" doc:id="3187e9a4-417f-4ee5-b462-3622f2031291" />
+		<logger level="INFO" doc:name="Logger" doc:id="6211b05d-fe2c-42f0-a796-1b6e199698e6" message="#[payload]"/>
+	</flow>
+</mule>
